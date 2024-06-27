@@ -207,20 +207,16 @@ class DeployNixpacksAction extends DeploymentBaseAction
     public function generateDockerImageNames(): array
     {
         $application = $this->getApplication();
-        $applicationDeploymentQueue = $this->getContext()->getApplicationDeploymentQueue();
 
-        $commit = $applicationDeploymentQueue->commit;
+        $commit = $this->getContext()->getApplicationDeploymentQueue()->commit;
 
-        if ($application->docker_registry_image_name) {
-            return [
-                'buildImageName' => "{$application->docker_registry_image_name}:{$commit}-build",
-                'productionImageName' => "{$application->docker_registry_image_name}:{$commit}",
-            ];
-        }
+        $dockerRegistryImageName = $application->docker_registry_image_name;
+
+        $buildImageName = $dockerRegistryImageName ?: $application->uuid;
 
         return [
-            'buildImageName' => "{$application->uuid}:{$commit}-build",
-            'productionImageName' => "{$application->uuid}:{$commit}",
+            'buildImageName' => "{$buildImageName}:{$commit}-build",
+            'productionImageName' => "{$buildImageName}:{$commit}",
         ];
     }
 

@@ -360,7 +360,7 @@ abstract class DeploymentBaseAction
 
         foreach ($applicationEnvvars as $env) {
             if (! is_null($env->real_value)) {
-                $envs->put($env->key, $env->real_value);
+                $envs->put($env->key, escapeshellarg($env->real_value));
             }
         }
 
