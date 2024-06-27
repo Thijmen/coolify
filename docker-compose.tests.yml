@@ -39,8 +39,7 @@ services:
     volumes:
       - /data/coolify/_volumes/database-tests/:/var/lib/postgresql/data
 
-
 networks:
   coolify:
     name: coolify
-    external: true
+    external: false
