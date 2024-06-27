@@ -27,8 +27,8 @@ You can ask for guidance anytime on our
 Ensure the following lines in your .env file are set correctly.But it may vary depending on your setup and OS. Start like this if unsure:
 ```.env
 - APP_URL=http://localhost
-- USERID=33333
-- GROUPID=33333
+- USERID=1000
+- GROUPID=1000
 ```
 
 Next, run `composer install`.
