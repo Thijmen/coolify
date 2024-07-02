@@ -45,6 +45,7 @@ class DeployNixpacksAction extends DeploymentBaseAction
         $this->generateComposeFile();
 
         $this->buildImage();
+        $this->pushToDockerRegistry();
         $this->rollingUpdate();
     }
 
