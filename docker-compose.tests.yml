@@ -43,4 +43,4 @@ services:
 networks:
   coolify:
     name: coolify
-    external: true
+    external: false
